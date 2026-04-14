@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0a0f;
-  --foreground: #f0f0f5;
+  --background: #1A1A1A;
+  --foreground: #FFF8E1;
 }
 
 body {
@@ -13,51 +13,102 @@ body {
 }
 
 ::selection {
-  background: #e040fb;
-  color: #0a0a0f;
+  background: #FFD600;
+  color: #1A1A1A;
 }
 
 @layer components {
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
-    background-size: 200% auto;
+  .comic-border {
+    @apply border-4 border-comic-black;
+    box-shadow: 6px 6px 0px #1A1A1A;
   }
 
-  .glass-card {
-    @apply bg-dark-card/60 backdrop-blur-md border border-dark-border rounded-2xl;
+  .comic-border-sm {
+    @apply border-3 border-comic-black;
+    box-shadow: 4px 4px 0px #1A1A1A;
   }
 
-  .neon-border {
-    @apply border border-primary/30 hover:border-primary/70 transition-colors duration-300;
+  .comic-card {
+    @apply bg-comic-yellow border-4 border-comic-black relative overflow-hidden;
+    box-shadow: 8px 8px 0px #1A1A1A;
   }
 
-  .btn-primary {
-    @apply inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold
-           bg-gradient-to-r from-primary to-secondary text-dark
-           hover:shadow-[0_0_30px_rgba(224,64,251,0.4)] transition-all duration-300
-           hover:scale-105 active:scale-95;
+  .comic-card-dark {
+    @apply bg-comic-black border-4 border-comic-yellow relative overflow-hidden;
+    box-shadow: 8px 8px 0px #FFD600;
   }
 
-  .btn-outline {
-    @apply inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold
-           border border-primary/50 text-primary
-           hover:bg-primary/10 hover:border-primary transition-all duration-300
-           hover:scale-105 active:scale-95;
+  .btn-comic {
+    @apply inline-flex items-center gap-2 px-8 py-4 font-comic text-xl uppercase
+           bg-comic-red text-white border-4 border-comic-black
+           hover:scale-105 active:scale-95 transition-transform duration-200
+           tracking-wider;
+    box-shadow: 5px 5px 0px #1A1A1A;
+  }
+
+  .btn-comic:hover {
+    box-shadow: 3px 3px 0px #1A1A1A;
+    transform: translate(2px, 2px) scale(1.05);
+  }
+
+  .btn-comic-outline {
+    @apply inline-flex items-center gap-2 px-8 py-4 font-comic text-xl uppercase
+           bg-transparent text-comic-yellow border-4 border-comic-yellow
+           hover:bg-comic-yellow hover:text-comic-black
+           transition-all duration-200 tracking-wider;
+    box-shadow: 5px 5px 0px #FFD600;
   }
 
   .section-heading {
-    @apply text-4xl md:text-5xl font-bold mb-4;
+    @apply text-5xl md:text-7xl font-comic uppercase tracking-wider;
+    -webkit-text-stroke: 2px #1A1A1A;
+    paint-order: stroke fill;
   }
 
-  .section-subheading {
-    @apply text-lg max-w-2xl;
-    color: rgba(240, 240, 245, 0.6);
+  .halftone {
+    background-image: radial-gradient(circle, #1A1A1A 1px, transparent 1px);
+    background-size: 8px 8px;
+  }
+
+  .halftone-yellow {
+    background-image: radial-gradient(circle, #FFD600 1px, transparent 1px);
+    background-size: 8px 8px;
+  }
+
+  .halftone-lg {
+    background-image: radial-gradient(circle, #1A1A1A 2px, transparent 2px);
+    background-size: 16px 16px;
+  }
+
+  .speed-lines {
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 4px,
+      rgba(255, 214, 0, 0.1) 4px,
+      rgba(255, 214, 0, 0.1) 5px
+    );
+  }
+
+  .comic-panel {
+    @apply border-4 border-comic-black bg-comic-white relative;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 2px #1A1A1A;
+    paint-order: stroke fill;
+  }
+
+  .text-stroke-yellow {
+    -webkit-text-stroke: 2px #FFD600;
+    paint-order: stroke fill;
   }
 }
 
@@ -66,18 +117,28 @@ html {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0f;
+  background: #1A1A1A;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e1e30;
-  border-radius: 4px;
+  background: #FFD600;
+  border: 2px solid #1A1A1A;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #e040fb;
+  background: #FF1744;
+}
+
+@keyframes comic-pop {
+  0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+  60% { transform: scale(1.2) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.comic-pop {
+  animation: comic-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
