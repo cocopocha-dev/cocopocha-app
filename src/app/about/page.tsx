@@ -3,59 +3,70 @@
 import { motion } from "framer-motion";
 
 const skills = [
-  { name: "UI/UX Design", level: 95 },
+  { name: "Mobile App Dev", level: 95 },
+  { name: "UI/UX Design", level: 92 },
   { name: "Frontend Dev", level: 90 },
-  { name: "Backend Dev", level: 85 },
-  { name: "Branding", level: 88 },
+  { name: "Backend / API", level: 88 },
 ];
 
 const values = [
   {
     num: "01",
-    title: "Creativity",
-    desc: "常に新しいアイデアを追求し、既成概念にとらわれないデザインを生み出します。",
+    title: "Innovation",
+    desc: "常に最新技術をキャッチアップし、革新的なアプリ体験を追求します。",
     color: "bg-comic-yellow",
-    rotation: "-rotate-2",
   },
   {
     num: "02",
     title: "Quality",
     desc: "細部にまでこだわり、最高品質のプロダクトを提供することをお約束します。",
     color: "bg-comic-red",
-    rotation: "rotate-1",
   },
   {
     num: "03",
     title: "Speed",
     desc: "アジャイルな開発プロセスで、スピーディーにアイデアを形にします。",
     color: "bg-comic-blue",
-    rotation: "rotate-2",
   },
   {
     num: "04",
-    title: "Collaboration",
+    title: "Partnership",
     desc: "クライアントとの密なコミュニケーションで、最適なソリューションを導きます。",
     color: "bg-comic-orange",
-    rotation: "-rotate-1",
   },
 ];
+
+const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
+
+const diagonalIn = {
+  hidden: { opacity: 0, x: -100, y: 50, rotate: -4 },
+  visible: (i: number) => ({
+    opacity: 1, x: 0, y: 0, rotate: 0,
+    transition: { duration: 0.6, delay: i * 0.12, ease },
+  }),
+};
+
+const diagonalInRight = {
+  hidden: { opacity: 0, x: 100, y: 50, rotate: 4 },
+  visible: { opacity: 1, x: 0, y: 0, rotate: 0, transition: { duration: 0.7, ease } },
+};
 
 export default function AboutPage() {
   return (
     <>
       <section className="relative py-24 px-6 bg-comic-yellow overflow-hidden">
         <div className="absolute inset-0 halftone opacity-10" />
-        <div className="absolute -bottom-2 left-0 w-full">
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16">
-            <path d="M0,0 L80,60 L160,20 L240,50 L320,10 L400,60 L480,30 L560,50 L640,10 L720,60 L800,20 L880,50 L960,10 L1040,60 L1120,30 L1200,50 L1280,10 L1360,60 L1440,20 L1440,80 L0,80 Z" fill="#1A1A1A" />
+        <div className="absolute -bottom-1 left-0 w-full">
+          <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-20">
+            <path d="M0,0 L1440,80 L1440,120 L0,120 Z" fill="#1A1A1A" />
           </svg>
         </div>
 
         <div className="max-w-7xl mx-auto relative">
           <motion.div
-            initial={{ x: -60, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
+            initial={{ x: -80, opacity: 0, rotate: -3 }}
+            animate={{ x: 0, opacity: 1, rotate: 0 }}
+            transition={{ duration: 0.7, ease }}
             className="max-w-3xl"
           >
             <span className="inline-block px-4 py-1 bg-comic-black text-comic-yellow font-comic text-sm tracking-widest uppercase mb-6 transform -rotate-2">
@@ -65,11 +76,11 @@ export default function AboutPage() {
               className="text-5xl md:text-7xl font-comic text-comic-black uppercase leading-tight mb-6"
               style={{ textShadow: "3px 3px 0px #FF1744" }}
             >
-              ポップで
-              <span className="text-comic-red">スタイリッシュ</span>
-              な
+              アプリで
+              <span className="text-comic-red">ビジネス</span>
+              を
               <br />
-              デジタル体験を。
+              加速させる。
             </h1>
             <motion.div
               initial={{ rotate: -1, y: 20, opacity: 0 }}
@@ -79,9 +90,9 @@ export default function AboutPage() {
               style={{ boxShadow: "6px 6px 0px rgba(0,0,0,0.3)" }}
             >
               <p className="text-comic-yellow text-lg leading-relaxed max-w-xl">
-                cocopochaは、デザインとテクノロジーを融合させたクリエイティブスタジオです。
-                「ポップ」をコンセプトに、遊び心のあるデザインと洗練された技術力で、
-                記憶に残るデジタル体験を創り出します。
+                cocopocha LAB は、アプリ開発に特化したクリエイティブチームです。
+                企画・デザイン・開発・運用まで一気通貫で、
+                ビジネスを成長させるアプリを生み出します。
               </p>
             </motion.div>
           </motion.div>
@@ -90,10 +101,12 @@ export default function AboutPage() {
 
       <section className="py-24 px-6 bg-comic-black relative overflow-hidden">
         <div className="absolute inset-0 halftone-yellow opacity-5" />
+        <div className="absolute inset-0 diagonal-lines opacity-5" />
         <div className="max-w-7xl mx-auto relative">
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
+            variants={diagonalInRight}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
             className="text-center mb-16"
           >
@@ -109,12 +122,13 @@ export default function AboutPage() {
             {values.map((item, i) => (
               <motion.div
                 key={item.title}
-                initial={{ y: 40, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
+                custom={i}
+                variants={diagonalIn}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ scale: 1.03, rotate: i % 2 === 0 ? 1 : -1 }}
-                className={`${item.color} p-8 border-4 border-comic-black ${item.rotation}`}
+                whileHover={{ scale: 1.03, rotate: i % 2 === 0 ? 1 : -1, y: -6 }}
+                className={`${item.color} p-8 border-4 border-comic-black transform ${i % 2 === 0 ? "-rotate-1" : "rotate-1"}`}
                 style={{ boxShadow: "8px 8px 0px #1A1A1A" }}
               >
                 <span className="text-6xl font-comic text-comic-black/20">{item.num}</span>
@@ -128,21 +142,23 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
+
+        <div className="absolute -bottom-1 left-0 w-full">
+          <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-20">
+            <path d="M0,0 L0,120 L1440,120 L1440,60 Z" fill="#FFD600" />
+          </svg>
+        </div>
       </section>
 
       <section className="relative py-24 px-6 bg-comic-yellow overflow-hidden">
-        <div className="absolute top-0 left-0 w-full">
-          <svg viewBox="0 0 1440 60" preserveAspectRatio="none" className="w-full h-12">
-            <path d="M0,60 Q360,0 720,60 T1440,60 L1440,0 L0,0 Z" fill="#1A1A1A" />
-          </svg>
-        </div>
         <div className="absolute inset-0 halftone opacity-10" />
 
         <div className="max-w-3xl mx-auto relative">
           <motion.div
-            initial={{ x: -30, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
+            initial={{ opacity: 0, x: -80, rotate: -3 }}
+            whileInView={{ opacity: 1, x: 0, rotate: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.7, ease }}
             className="text-center mb-16"
           >
             <h2
@@ -157,10 +173,10 @@ export default function AboutPage() {
             {skills.map((skill, i) => (
               <motion.div
                 key={skill.name}
-                initial={{ x: -40, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
+                initial={{ x: i % 2 === 0 ? -80 : 80, opacity: 0, rotate: i % 2 === 0 ? -3 : 3 }}
+                whileInView={{ x: 0, opacity: 1, rotate: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.1, duration: 0.6, ease }}
               >
                 <div className="flex justify-between mb-2">
                   <span className="font-comic text-xl text-comic-black uppercase tracking-wider">
