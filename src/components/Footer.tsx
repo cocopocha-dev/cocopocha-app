@@ -17,9 +17,14 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <Link
             href="/"
-            className="text-4xl font-comic text-comic-yellow tracking-wider uppercase"
+            className="flex items-baseline gap-1"
           >
-            cocopocha
+            <span className="text-4xl font-comic text-comic-yellow tracking-wider uppercase">
+              cocopocha
+            </span>
+            <span className="text-2xl font-comic text-comic-red tracking-wider uppercase">
+              LAB
+            </span>
           </Link>
 
           <nav className="flex flex-wrap items-center justify-center gap-2">
@@ -38,7 +43,7 @@ export default function Footer() {
 
         <div className="mt-8 pt-8 border-t-2 border-comic-yellow/20 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-comic-yellow/40 font-comic tracking-wider">
-            &copy; 2024 cocopocha. All rights reserved.
+            &copy; 2024 cocopocha LAB. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <a
