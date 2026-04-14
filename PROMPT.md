@@ -7,3 +7,7 @@
 参考サイト: http://cocopocha.com|cocopocha.com>のホームページを作って
 
 カレントディレクトリに Next.js 14 App Router プロジェクトを作成し、全ページコンポーネント・layout・globals.css を実装してください。
+
+---
+## 2026-04-15 00:02:14 (update)
+Vercelデプロイ失敗の原因を探して修復して
