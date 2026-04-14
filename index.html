@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHRONO FLUX - 未来型タイマー</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="scan-line"></div>
+
+  <div class="container">
+    <header class="header">
+      <h1 class="logo">CHRONO <span>FLUX</span></h1>
+      <p class="subtitle">QUANTUM TIMER SYSTEM v2.0</p>
+    </header>
+
+    <div class="timer-display">
+      <div class="ring-container">
+        <svg class="progress-ring" viewBox="0 0 300 300">
+          <circle class="ring-bg" cx="150" cy="150" r="140" />
+          <circle class="ring-progress" cx="150" cy="150" r="140" />
+          <circle class="ring-glow" cx="150" cy="150" r="140" />
+        </svg>
+        <div class="time-text">
+          <span id="display-hours">00</span>
+          <span class="separator">:</span>
+          <span id="display-minutes">00</span>
+          <span class="separator">:</span>
+          <span id="display-seconds">00</span>
+        </div>
+        <div class="status-label" id="status-label">待機中</div>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <div class="input-group">
+        <div class="input-field">
+          <label>時間</label>
+          <div class="spinner">
+            <button class="spin-btn up" data-target="input-hours" data-dir="up">&#9650;</button>
+            <input type="number" id="input-hours" min="0" max="99" value="0">
+            <button class="spin-btn down" data-target="input-hours" data-dir="down">&#9660;</button>
+          </div>
+        </div>
+        <div class="input-field">
+          <label>分</label>
+          <div class="spinner">
+            <button class="spin-btn up" data-target="input-minutes" data-dir="up">&#9650;</button>
+            <input type="number" id="input-minutes" min="0" max="59" value="5">
+            <button class="spin-btn down" data-target="input-minutes" data-dir="down">&#9660;</button>
+          </div>
+        </div>
+        <div class="input-field">
+          <label>秒</label>
+          <div class="spinner">
+            <button class="spin-btn up" data-target="input-seconds" data-dir="up">&#9650;</button>
+            <input type="number" id="input-seconds" min="0" max="59" value="0">
+            <button class="spin-btn down" data-target="input-seconds" data-dir="down">&#9660;</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="presets">
+        <button class="preset-btn" data-minutes="1">1分</button>
+        <button class="preset-btn" data-minutes="3">3分</button>
+        <button class="preset-btn" data-minutes="5">5分</button>
+        <button class="preset-btn" data-minutes="10">10分</button>
+        <button class="preset-btn" data-minutes="15">15分</button>
+        <button class="preset-btn" data-minutes="30">30分</button>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="ctrl-btn start" id="btn-start">
+        <span class="btn-icon">&#9654;</span>
+        <span class="btn-label">開始</span>
+      </button>
+      <button class="ctrl-btn pause" id="btn-pause" disabled>
+        <span class="btn-icon">&#10074;&#10074;</span>
+        <span class="btn-label">一時停止</span>
+      </button>
+      <button class="ctrl-btn reset" id="btn-reset" disabled>
+        <span class="btn-icon">&#8634;</span>
+        <span class="btn-label">リセット</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="alarm-overlay" id="alarm-overlay">
+    <div class="alarm-content">
+      <div class="alarm-icon">⏰</div>
+      <p class="alarm-text">タイムアップ</p>
+      <button class="alarm-dismiss" id="alarm-dismiss">停止</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
