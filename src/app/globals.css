@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0a0f;
+  --foreground: #f0f0f5;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+::selection {
+  background: #e040fb;
+  color: #0a0a0f;
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+    background-size: 200% auto;
+  }
+
+  .glass-card {
+    @apply bg-dark-card/60 backdrop-blur-md border border-dark-border rounded-2xl;
+  }
+
+  .neon-border {
+    @apply border border-primary/30 hover:border-primary/70 transition-colors duration-300;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold
+           bg-gradient-to-r from-primary to-secondary text-dark
+           hover:shadow-[0_0_30px_rgba(224,64,251,0.4)] transition-all duration-300
+           hover:scale-105 active:scale-95;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold
+           border border-primary/50 text-primary
+           hover:bg-primary/10 hover:border-primary transition-all duration-300
+           hover:scale-105 active:scale-95;
+  }
+
+  .section-heading {
+    @apply text-4xl md:text-5xl font-bold mb-4;
+  }
+
+  .section-subheading {
+    @apply text-lg max-w-2xl;
+    color: rgba(240, 240, 245, 0.6);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e1e30;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e040fb;
+}
