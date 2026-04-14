@@ -1,17 +1,9 @@
-以下の仕様でWebアプリを開発してください。
+以下の要件でNext.js 14（TypeScript + Tailwind CSS）のホームページを開発してください。
 
 【要件】
-タイマーアプリ作って 未来的デザイン
+コンセプト: ポップ
+ページ構成: top・about・works・blog・contact
+カラーイメージ: ダーク・スタイリッシュ
+参考サイト: http://cocopocha.com|cocopocha.com>のホームページを作って
 
-カレントディレクトリに index.html / style.css / app.js を生成してください。
-vanilla JavaScript（フレームワーク不使用）、モバイル対応、日本語UI。
-完成したら README.md も作成してください。
-
----
-## 2026-04-14 23:36:14 (update)
-vercelデプロイをやり直して
-
-
----
-## 2026-04-14 23:41:05 (update)
-もう一度デプロイまで
+カレントディレクトリに Next.js 14 App Router プロジェクトを作成し、全ページコンポーネント・layout・globals.css を実装してください。
