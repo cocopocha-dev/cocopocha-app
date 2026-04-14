@@ -39,3 +39,13 @@ Vercelデプロイが失敗しています。原因を完全追求して
 ---
 ## 2026-04-15 00:11:44 (update)
 Vercelデプロイ失敗
+
+
+---
+## 2026-04-15 00:13:54 (update)
+├ chunks/fd9d1056-3eee857bde8f3b06.js  53.6 kB
+  └ other shared chunks (total)          1.91 kB
+○  (Static)  prerendered as static content
+Error: No Output Directory named "public" found after the Build completed. Configure the Output Directory in your Project Settings. Alternatively, configure vercel.json#outputDirectory.
+Learn More: <https://vercel.link/missing-public-directory|https://vercel.link/missing-public-directory>
+Deployment Summary
