@@ -90,6 +90,16 @@ body {
     );
   }
 
+  .diagonal-lines {
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 8px,
+      rgba(255, 214, 0, 0.08) 8px,
+      rgba(255, 214, 0, 0.08) 9px
+    );
+  }
+
   .comic-panel {
     @apply border-4 border-comic-black bg-comic-white relative;
     box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
@@ -109,6 +119,18 @@ body {
   .text-stroke-yellow {
     -webkit-text-stroke: 2px #FFD600;
     paint-order: stroke fill;
+  }
+
+  .clip-diagonal-top {
+    clip-path: polygon(0 8%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .clip-diagonal-bottom {
+    clip-path: polygon(0 0%, 100% 0%, 100% 92%, 0% 100%);
+  }
+
+  .clip-diagonal-both {
+    clip-path: polygon(0 6%, 100% 0%, 100% 94%, 0% 100%);
   }
 }
 
@@ -141,4 +163,22 @@ html {
 
 .comic-pop {
   animation: comic-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes diagonal-slide-in-left {
+  0% { transform: translateX(-100%) skewX(-8deg); opacity: 0; }
+  100% { transform: translateX(0) skewX(0deg); opacity: 1; }
+}
+
+@keyframes diagonal-slide-in-right {
+  0% { transform: translateX(100%) skewX(8deg); opacity: 0; }
+  100% { transform: translateX(0) skewX(0deg); opacity: 1; }
+}
+
+.diagonal-in-left {
+  animation: diagonal-slide-in-left 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.diagonal-in-right {
+  animation: diagonal-slide-in-right 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
