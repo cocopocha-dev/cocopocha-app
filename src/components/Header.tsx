@@ -18,9 +18,12 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-comic-black border-b-4 border-comic-yellow">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-        <Link href="/" className="relative group">
+        <Link href="/" className="relative group flex items-baseline gap-1">
           <span className="text-3xl font-comic text-comic-yellow tracking-wider uppercase group-hover:text-comic-red transition-colors duration-200">
             cocopocha
+          </span>
+          <span className="text-xl font-comic text-comic-red tracking-wider uppercase group-hover:text-comic-yellow transition-colors duration-200">
+            LAB
           </span>
           <span className="absolute -bottom-1 left-0 w-full h-1 bg-comic-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
         </Link>
