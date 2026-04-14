@@ -49,3 +49,13 @@ Vercelデプロイ失敗
 Error: No Output Directory named "public" found after the Build completed. Configure the Output Directory in your Project Settings. Alternatively, configure vercel.json#outputDirectory.
 Learn More: <https://vercel.link/missing-public-directory|https://vercel.link/missing-public-directory>
 Deployment Summary
+
+
+---
+## 2026-04-15 00:17:37 (update)
+法人ではないので住所などは載せないで
+
+• カラー：黄色×黒を基調としたポップなアメコミスタイル
+• レイアウト：水平垂直のモダンなグリッドではなく流動的で斜め・曲線・ダイナミックな構成
+• アニメーション：見ていてわくわくする動き・エフェクトを随所に
+• 全体的にエネルギッシュで斬新、既存のIT企業サイトとは一線を画すデザイン
