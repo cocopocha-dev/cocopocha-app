@@ -4,6 +4,18 @@ import { useState } from "react";
 import type { FormEvent } from "react";
 import { motion } from "framer-motion";
 
+const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
+
+const diagonalIn = {
+  hidden: { opacity: 0, x: -100, y: 50, rotate: -4 },
+  visible: { opacity: 1, x: 0, y: 0, rotate: 0, transition: { duration: 0.7, ease } },
+};
+
+const diagonalInRight = {
+  hidden: { opacity: 0, x: 100, y: 50, rotate: 4 },
+  visible: { opacity: 1, x: 0, y: 0, rotate: 0, transition: { duration: 0.7, ease } },
+};
+
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
@@ -16,17 +28,17 @@ export default function ContactPage() {
     <>
       <section className="relative py-24 px-6 bg-comic-yellow overflow-hidden">
         <div className="absolute inset-0 halftone opacity-10" />
-        <div className="absolute -bottom-2 left-0 w-full">
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16">
-            <path d="M0,40 Q360,80 720,20 T1440,40 L1440,80 L0,80 Z" fill="#1A1A1A" />
+        <div className="absolute -bottom-1 left-0 w-full">
+          <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-20">
+            <path d="M0,0 L1440,80 L1440,120 L0,120 Z" fill="#1A1A1A" />
           </svg>
         </div>
 
         <div className="max-w-4xl mx-auto relative">
           <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            initial={{ x: -80, opacity: 0, rotate: -3 }}
+            animate={{ x: 0, opacity: 1, rotate: 0 }}
+            transition={{ duration: 0.7, ease }}
           >
             <span className="inline-block px-4 py-1 bg-comic-black text-comic-yellow font-comic text-sm tracking-widest uppercase mb-6 transform -rotate-2">
               Contact
@@ -39,7 +51,7 @@ export default function ContactPage() {
               <span className="text-comic-red">Touch</span>
             </h1>
             <div className="inline-block bg-comic-black px-4 py-2 mt-4 transform rotate-1">
-              <p className="text-comic-yellow">プロジェクトのご相談やお問い合わせはお気軽にどうぞ。</p>
+              <p className="text-comic-yellow">アプリ開発のご相談やお問い合わせはお気軽にどうぞ。</p>
             </div>
           </motion.div>
         </div>
@@ -47,15 +59,17 @@ export default function ContactPage() {
 
       <section className="py-24 px-6 bg-comic-black relative overflow-hidden">
         <div className="absolute inset-0 halftone-yellow opacity-5" />
+        <div className="absolute inset-0 diagonal-lines opacity-5" />
         <div className="max-w-3xl mx-auto relative">
           <motion.div
-            initial={{ y: 40, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
+            variants={diagonalIn}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
           >
             {submitted ? (
               <motion.div
-                initial={{ scale: 0, rotate: -5 }}
+                initial={{ scale: 0, rotate: -8 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ type: "spring", stiffness: 200 }}
                 className="bg-comic-yellow p-12 border-4 border-comic-black text-center"
@@ -80,10 +94,14 @@ export default function ContactPage() {
                 ].map((field, i) => (
                   <motion.div
                     key={field.id}
-                    initial={{ x: i % 2 === 0 ? -30 : 30, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
+                    initial={{
+                      x: i % 2 === 0 ? -80 : 80,
+                      opacity: 0,
+                      rotate: i % 2 === 0 ? -3 : 3,
+                    }}
+                    whileInView={{ x: 0, opacity: 1, rotate: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
+                    transition={{ delay: i * 0.1, duration: 0.6, ease }}
                   >
                     <label htmlFor={field.id} className="block font-comic text-lg text-comic-yellow mb-2 tracking-wider uppercase">
                       {field.label}
@@ -103,10 +121,10 @@ export default function ContactPage() {
                 ))}
 
                 <motion.div
-                  initial={{ x: 30, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
+                  variants={diagonalInRight}
+                  initial="hidden"
+                  whileInView="visible"
                   viewport={{ once: true }}
-                  transition={{ delay: 0.3 }}
                 >
                   <label htmlFor="message" className="block font-comic text-lg text-comic-yellow mb-2 tracking-wider uppercase">
                     MESSAGE
@@ -125,10 +143,10 @@ export default function ContactPage() {
                 </motion.div>
 
                 <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
+                  initial={{ y: 40, opacity: 0, rotate: 2 }}
+                  whileInView={{ y: 0, opacity: 1, rotate: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.4 }}
+                  transition={{ delay: 0.4, duration: 0.6, ease }}
                 >
                   <button type="submit" className="btn-comic w-full justify-center text-2xl">
                     SEND MESSAGE!
@@ -142,10 +160,10 @@ export default function ContactPage() {
           </motion.div>
 
           <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
+            initial={{ y: 50, opacity: 0, rotate: -3 }}
+            whileInView={{ y: 0, opacity: 1, rotate: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.2, duration: 0.7, ease }}
             className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6"
           >
             <div
