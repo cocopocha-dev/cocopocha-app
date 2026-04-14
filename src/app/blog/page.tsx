@@ -4,44 +4,63 @@ import { motion } from "framer-motion";
 
 const posts = [
   {
-    slug: "design-trends-2024",
-    title: "2024年のデザイントレンド — ネオンとミニマリズムの融合",
-    excerpt: "今年注目すべきデザイントレンドを、ネオンカラーとミニマルデザインの観点から解説します。",
+    slug: "app-development-trends-2024",
+    title: "2024年のアプリ開発トレンド — AI統合とクロスプラットフォーム",
+    excerpt: "今年注目すべきアプリ開発トレンドを、AI機能統合とクロスプラットフォーム開発の観点から解説します。",
     date: "2024.03.15",
-    category: "Design",
-    readTime: "5 min",
-  },
-  {
-    slug: "nextjs-performance",
-    title: "Next.js 14で実現する究極のパフォーマンス最適化",
-    excerpt: "App Routerを活用したパフォーマンスチューニングのベストプラクティスをご紹介します。",
-    date: "2024.02.28",
     category: "Tech",
+    readTime: "5 min",
+    color: "#2979FF",
+  },
+  {
+    slug: "mobile-ux-design",
+    title: "モバイルUXデザインの極意 — ユーザーを虜にする体験設計",
+    excerpt: "ユーザーリテンションを高めるモバイルUXデザインのベストプラクティスをご紹介します。",
+    date: "2024.02.28",
+    category: "Design",
     readTime: "8 min",
+    color: "#FF1744",
   },
   {
-    slug: "brand-identity",
-    title: "ブランドアイデンティティを確立する5つのステップ",
-    excerpt: "ポップでありながらプロフェッショナルなブランドを構築するための実践的なガイド。",
+    slug: "flutter-vs-react-native",
+    title: "Flutter vs React Native — 2024年の最適解を探る",
+    excerpt: "クロスプラットフォーム開発のフレームワーク選定ガイド。プロジェクト特性別の最適解を解説。",
     date: "2024.02.10",
-    category: "Branding",
+    category: "Tech",
     readTime: "6 min",
+    color: "#FF6D00",
   },
   {
-    slug: "creative-process",
-    title: "クリエイティブプロセスの裏側 — アイデアから実装まで",
-    excerpt: "私たちのデザインプロセスを公開。インスピレーションの見つけ方から最終納品まで。",
+    slug: "app-launch-strategy",
+    title: "アプリローンチ戦略 — 成功する市場投入のステップ",
+    excerpt: "アプリリリースからグロースまで、cocopocha LAB が実践するローンチ戦略を公開。",
     date: "2024.01.20",
-    category: "Process",
+    category: "Strategy",
     readTime: "7 min",
+    color: "#AA00FF",
   },
 ];
 
 const categoryColors: Record<string, string> = {
   Design: "bg-comic-red text-comic-white",
   Tech: "bg-comic-blue text-comic-white",
-  Branding: "bg-comic-orange text-comic-black",
+  Strategy: "bg-comic-orange text-comic-black",
   Process: "bg-comic-pink text-comic-white",
+};
+
+const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
+
+const diagonalIn = {
+  hidden: (i: number) => ({
+    opacity: 0,
+    x: i % 2 === 0 ? -100 : 100,
+    y: 40,
+    rotate: i % 2 === 0 ? -4 : 4,
+  }),
+  visible: (i: number) => ({
+    opacity: 1, x: 0, y: 0, rotate: 0,
+    transition: { duration: 0.6, delay: i * 0.12, ease },
+  }),
 };
 
 export default function BlogPage() {
@@ -49,17 +68,17 @@ export default function BlogPage() {
     <>
       <section className="relative py-24 px-6 bg-comic-yellow overflow-hidden">
         <div className="absolute inset-0 halftone opacity-10" />
-        <div className="absolute -bottom-2 left-0 w-full">
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16">
-            <path d="M0,20 L100,60 L200,30 L300,70 L400,20 L500,50 L600,10 L700,60 L800,30 L900,70 L1000,20 L1100,50 L1200,10 L1300,60 L1440,30 L1440,80 L0,80 Z" fill="#1A1A1A" />
+        <div className="absolute -bottom-1 left-0 w-full">
+          <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-20">
+            <path d="M0,120 L0,60 L1440,0 L1440,120 Z" fill="#1A1A1A" />
           </svg>
         </div>
 
         <div className="max-w-4xl mx-auto relative">
           <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            initial={{ x: -80, opacity: 0, rotate: -3 }}
+            animate={{ x: 0, opacity: 1, rotate: 0 }}
+            transition={{ duration: 0.7, ease }}
           >
             <span className="inline-block px-4 py-1 bg-comic-black text-comic-yellow font-comic text-sm tracking-widest uppercase mb-6 transform rotate-1">
               Blog
@@ -72,7 +91,7 @@ export default function BlogPage() {
               <span className="text-comic-red">Articles</span>
             </h1>
             <div className="inline-block bg-comic-black px-4 py-2 mt-4 transform -rotate-1">
-              <p className="text-comic-yellow">デザイン・テクノロジーに関する最新の知見を発信しています。</p>
+              <p className="text-comic-yellow">アプリ開発・デザインに関する最新の知見を発信しています。</p>
             </div>
           </motion.div>
         </div>
@@ -80,21 +99,26 @@ export default function BlogPage() {
 
       <section className="py-24 px-6 bg-comic-black relative overflow-hidden">
         <div className="absolute inset-0 halftone-yellow opacity-5" />
+        <div className="absolute inset-0 diagonal-lines opacity-5" />
         <div className="max-w-4xl mx-auto relative space-y-8">
           {posts.map((post, i) => (
             <motion.article
               key={post.slug}
-              initial={{ x: i % 2 === 0 ? -40 : 40, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
+              custom={i}
+              variants={diagonalIn}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ scale: 1.02, rotate: i % 2 === 0 ? 0.5 : -0.5 }}
-              className="bg-comic-yellow p-8 border-4 border-comic-black cursor-pointer group"
+              whileHover={{ scale: 1.02, rotate: i % 2 === 0 ? 0.5 : -0.5, y: -4 }}
+              className="bg-comic-yellow p-8 border-4 border-comic-black cursor-pointer group relative overflow-hidden"
               style={{
                 boxShadow: "8px 8px 0px rgba(255,214,0,0.3)",
-                transform: `rotate(${i % 2 === 0 ? "-0.5" : "0.5"}deg)`,
               }}
             >
+              <div
+                className="absolute top-0 left-0 w-2 h-full"
+                style={{ background: post.color }}
+              />
               <div className="flex flex-wrap items-center gap-3 mb-4">
                 <span className={`px-3 py-1 font-comic text-xs tracking-wider uppercase border-2 border-comic-black ${categoryColors[post.category] || "bg-comic-yellow text-comic-black"}`}>
                   {post.category}
