@@ -21,8 +21,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "monospace"],
+        sans: ["var(--font-inter)", "var(--font-noto-sans-jp)", "sans-serif"],
       },
       animation: {
         "gradient-x": "gradient-x 6s ease infinite",
