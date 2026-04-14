@@ -29,3 +29,8 @@ import { Inter, Noto_Sans_JP } from 'next/font/google'
 ビルドが通るようにしてください。
 
 修正後GitHubにpushしてVercelが自動再デプロイします。
+
+
+---
+## 2026-04-15 00:09:54 (update)
+Vercelデプロイが失敗しています。原因を完全追求して
