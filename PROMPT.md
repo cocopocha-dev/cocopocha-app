@@ -11,3 +11,21 @@
 ---
 ## 2026-04-15 00:02:14 (update)
 Vercelデプロイ失敗の原因を探して修復して
+
+
+---
+## 2026-04-15 00:07:22 (update)
+<http://cocopocha.com|cocopocha.com>のホームページのビルドエラーを修正してください。
+
+エラー：フォントファイルが見つからない
+• './fonts/GeistMonoVF.woff'
+• './fonts/GeistVF.woff'
+src/app/layout.tsxのフォント読み込みをローカルファイルから
+next/fontのGoogle Fontsに変更してください。
+
+import { Inter, Noto_Sans_JP } from 'next/font/google'
+
+またはGeistフォントをnext/fontから読み込む形に変更して
+ビルドが通るようにしてください。
+
+修正後GitHubにpushしてVercelが自動再デプロイします。
