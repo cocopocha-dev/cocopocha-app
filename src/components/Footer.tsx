@@ -1,28 +1,34 @@
 import Link from "next/link";
 
 const navItems = [
-  { href: "/", label: "Top" },
-  { href: "/about", label: "About" },
-  { href: "/works", label: "Works" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", label: "TOP" },
+  { href: "/about", label: "ABOUT" },
+  { href: "/works", label: "WORKS" },
+  { href: "/blog", label: "BLOG" },
+  { href: "/contact", label: "CONTACT" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-dark-border mt-auto">
-      <div className="max-w-7xl mx-auto px-6 py-12">
+    <footer className="bg-comic-black border-t-4 border-comic-yellow mt-auto relative overflow-hidden">
+      <div className="absolute inset-0 halftone-yellow opacity-5" />
+
+      <div className="relative max-w-7xl mx-auto px-6 py-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <Link href="/" className="text-2xl font-bold gradient-text">
+          <Link
+            href="/"
+            className="text-4xl font-comic text-comic-yellow tracking-wider uppercase"
+          >
             cocopocha
           </Link>
 
-          <nav className="flex flex-wrap items-center justify-center gap-6">
+          <nav className="flex flex-wrap items-center justify-center gap-2">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm text-foreground/50 hover:text-primary transition-colors"
+                className="px-3 py-1 font-comic text-sm text-comic-yellow/70 hover:text-comic-yellow
+                           hover:bg-comic-yellow/10 transition-all duration-200 tracking-wider uppercase"
               >
                 {item.label}
               </Link>
@@ -30,8 +36,8 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-dark-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-foreground/30">
+        <div className="mt-8 pt-8 border-t-2 border-comic-yellow/20 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-comic-yellow/40 font-comic tracking-wider">
             &copy; 2024 cocopocha. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
@@ -39,7 +45,9 @@ export default function Footer() {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground/30 hover:text-primary transition-colors"
+              className="w-10 h-10 border-2 border-comic-yellow/30 flex items-center justify-center
+                         text-comic-yellow/50 hover:text-comic-black hover:bg-comic-yellow hover:border-comic-yellow
+                         transition-all duration-200"
               aria-label="Twitter"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -50,7 +58,9 @@ export default function Footer() {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground/30 hover:text-primary transition-colors"
+              className="w-10 h-10 border-2 border-comic-yellow/30 flex items-center justify-center
+                         text-comic-yellow/50 hover:text-comic-black hover:bg-comic-yellow hover:border-comic-yellow
+                         transition-all duration-200"
               aria-label="GitHub"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -61,7 +71,9 @@ export default function Footer() {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground/30 hover:text-primary transition-colors"
+              className="w-10 h-10 border-2 border-comic-yellow/30 flex items-center justify-center
+                         text-comic-yellow/50 hover:text-comic-black hover:bg-comic-yellow hover:border-comic-yellow
+                         transition-all duration-200"
               aria-label="Instagram"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
