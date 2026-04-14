@@ -34,3 +34,8 @@ import { Inter, Noto_Sans_JP } from 'next/font/google'
 ---
 ## 2026-04-15 00:09:54 (update)
 Vercelデプロイが失敗しています。原因を完全追求して
+
+
+---
+## 2026-04-15 00:11:44 (update)
+Vercelデプロイ失敗
