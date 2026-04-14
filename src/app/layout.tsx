@@ -24,9 +24,9 @@ const bangers = Bangers({
 });
 
 export const metadata: Metadata = {
-  title: "cocopocha | Creative Studio",
+  title: "cocopocha LAB | App Development Team",
   description:
-    "cocopocha - A creative studio crafting digital experiences with style and pop.",
+    "cocopocha LAB - アプリ開発に特化したクリエイティブチーム。企画・デザイン・開発・運用まで一気通貫。",
 };
 
 export default function RootLayout({
